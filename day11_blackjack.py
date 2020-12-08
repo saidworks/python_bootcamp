@@ -7,7 +7,8 @@ print(blackjack)
 sum_player = 0
 sum_dealer = 0 
 play = True
-ten = [10,"A","K","J","Q"]
+ten = [10,"K","J","Q"]
+
 def sum(list):
     sum = 0
     for i in list:
@@ -16,7 +17,7 @@ def sum(list):
 def display(list):
     display = []
     for i in list: 
-        if i == 1:
+        if i == 1 or i == 11:
             display.append("A")
         elif i == 10:
             display.append(random.choice(ten))
@@ -25,29 +26,30 @@ def display(list):
     return display
 
 
-player_cards = [random.randint(1,10)]
-computer_cards = [random.randint(1,10)]
+player_cards = [random.randint(1,11)]
+computer_cards = [random.randint(1,11)]
 while play:
     print("Your cards are :", display(player_cards))
     print("Dealer cards are :", display(computer_cards))
 #hit
     player_choice = input("hit or stand? (h for hit or s for stand \t")
-    if player_choice == "h":
-        player_cards.append(random.randint(1,10))
-        computer_cards.append(random.randint(1,10))     
-        if sum(player_cards) > 21 and sum(computer_cards) <= 21 :
+    if player_choice == "h": 
+        player_cards.append(random.randint(1,11))
+        computer_cards.append(random.randint(1,11))     
+        if sum(player_cards) > 21 and sum(computer_cards) <= 21:
             print("Dealer cards are :", display(computer_cards))
             print("Your cards are :", display(player_cards))
             print("Dealer won his total is", sum(computer_cards))
             play = False
-        elif sum(computer_cards) > 21 and sum(computer_cards) <= 21:
+        elif sum(computer_cards) > 21 and sum(player_cards) <= 21:
             print("Dealer cards are :", display(computer_cards))
             print("Your cards are :", display(player_cards))
             print("You won your total is", sum(player_cards)) 
             play = False
+
 #stand
     elif player_choice == "s":
-        computer_cards.append(random.randint(1,10))
+        computer_cards.append(random.randint(1,11))
         if sum(player_cards) <= 21 and sum(computer_cards) <= 21:
             if sum(computer_cards) > sum(player_cards):
                 print("Dealer cards are :", display(computer_cards))
