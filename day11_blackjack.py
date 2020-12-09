@@ -9,14 +9,15 @@ sum_dealer = 0
 play = True
 ten = [10,"K","J","Q"]
 
-def sum(list):
+def sum(a):
     sum = 0
-    for i in list:
+    for i in a:
         sum += i
     return sum 
-def display(list):
+
+def display(a):
     display = []
-    for i in list: 
+    for i in a: 
         if i == 1 or i == 11:
             display.append("A")
         elif i == 10:
@@ -25,9 +26,9 @@ def display(list):
             display.append(str(i))
     return display
 
-
 player_cards = [random.randint(1,11)]
 computer_cards = [random.randint(1,11)]
+
 while play:
     print("Your cards are :", display(player_cards))
     print("Dealer cards are :", display(computer_cards))
