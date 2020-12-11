@@ -5,6 +5,8 @@ score = 0
 print(logo)
 choice_1 = random.choice(data)
 choice_2 = random.choice(data)
+if choice_2 == choice_1:
+    choice_2 = random.choice(data)
 
 game_play = True
 while game_play:
