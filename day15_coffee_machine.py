@@ -29,17 +29,18 @@ resources = {
     "milk": 200,
     "coffee": 100,
 }
-
-choice = input(" Choose your coffee latte, cappuccino or espresso : \t")
-quarter = int(input("how many quarter? \t"))
-dime = int(input("how many dime? \t"))
-nickel = int(input("how many nickel? \t"))
-penny = int(input("how many penny? \t"))
-
+try:
+    choice = input(" Choose your coffee latte, cappuccino or espresso : \t")
+    quarter = float(input("how many quarter? \t"))
+    dime = float(input("how many dime? \t"))
+    nickel = float(input("how many nickel? \t"))
+    penny = float(input("how many penny? \t"))
+except ValueError:
+    print("Enter a correct data")
 
 def remaining_money(penny,nickel,dime,quarter,cost=MENU[choice]["cost"]):
-    total = penny * 0.01 + nickel * 0.05 + quarter * 0.25 + dime * 0.10
-    return total - cost
+    total = (penny * 0.01) + (nickel * 0.05) + (quarter * 0.25) + (dime * 0.10)
+    return round(total - cost,2)
 
 def resources_update(choice):
     global MENU
@@ -69,15 +70,15 @@ def resources_update(choice):
 
 
 def coffee_machine(choice):
-    resources_update(choice)
-    try:
-        if remaining_money(penny,nickel,dime,quarter,cost=MENU[choice]["cost"]) >=0:
-            print("here is your {} enjoy ☕".format(choice))
-            print("here is your remaining money", remaining_money(penny,nickel,dime,quarter,cost=MENU[choice]["cost"]),"$")
-    except KeyError:
-        print("Your choice is not part of our menu")
+    resources_update(choice)  
+    if remaining_money(penny,nickel,dime,quarter,cost=MENU[choice]["cost"]) >=0:
+        print("here is your {} enjoy ☕".format(choice))
+        print("here is your remaining money", remaining_money(penny,nickel,dime,quarter,cost=MENU[choice]["cost"]),"$")
+    # except KeyError:
+    #     print("Your choice is not part of our menu")
     else:
         print("you did not insert enough money! please insert more coin")
-
-
-coffee_machine(choice)
+if choice in list(MENU.keys()):
+    coffee_machine(choice)
+else:
+    print("Sorry not in our menu!")
