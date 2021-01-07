@@ -15,6 +15,12 @@ screen.tracer(0)
 #     new_segment.goto(position)
 #     segments.append(new_segment)
 snake = Snake()
+
+screen.onkey(snake.up,"Up")
+screen.onkey(snake.down,"Down")
+screen.onkey(snake.left,"Left")
+screen.onkey(snake.right,"Right")
+screen.listen()
 game_is_on = True 
 while game_is_on:
     screen.update()
