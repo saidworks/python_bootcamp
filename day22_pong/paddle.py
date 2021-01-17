@@ -14,11 +14,11 @@ class Paddle(Turtle):
     def up(self):
         self.y += 10
         self.setheading(0)
-        self.goto(350,self.y)
+        self.goto(self.xcor,self.y)
             
         
     def down(self):
         self.y -= 10
         self.setheading(0)
-        self.goto(350,self.y)
+        self.goto(self.xcor,self.y)
 
