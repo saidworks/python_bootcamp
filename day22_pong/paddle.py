@@ -10,6 +10,7 @@ class Paddle(Turtle):
         self.goto(350,0)
         self.pos()
         self.y = 0
+        self.speed("fastest")
     def up(self):
         self.y += 10
         self.setheading(0)
@@ -20,6 +21,4 @@ class Paddle(Turtle):
         self.y -= 10
         self.setheading(0)
         self.goto(350,self.y)
-                
-
 
