@@ -38,7 +38,9 @@ while game_is_on:
     if (ball.distance(paddle_r) < 50 and ball.xcor()>320) or (ball.distance(paddle_l) <50 and ball.xcor()<-320):
         ball.bounce_x()
     #detect when the ball goes offscreen
-    if ball.xcor()>380 or ball.xcor()<-380:
+    if ball.xcor()>380: 
+        ball._reset()
+    elif ball.xcor()<-380:
         ball._reset()
        
         
