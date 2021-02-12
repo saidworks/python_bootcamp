@@ -21,4 +21,4 @@ class Paddle(Turtle):
         self.y -= 10
         self.setheading(0)
         self.goto(self.xcor,self.y)
-
+    
