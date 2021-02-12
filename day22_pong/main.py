@@ -1,4 +1,4 @@
-from turtle import Screen,Turtle
+from turtle import Screen,Turtle, clear
 from paddle import Paddle
 import time
 from ball import Ball
@@ -35,8 +35,11 @@ while game_is_on:
     if ball.ycor()>280 or ball.ycor()<-280:
         ball.bounce_y()
     #detect collision with paddle 
-    if (ball.distance(paddle_r) < 50 and ball.xcor()>320) or (ball.distance(paddle_l) >-50 and ball.xcor()<-320):
+    if (ball.distance(paddle_r) < 50 and ball.xcor()>320) or (ball.distance(paddle_l) <50 and ball.xcor()<-320):
         ball.bounce_x()
-    
-    
+    #detect when the ball goes offscreen
+    if ball.xcor()>380 or ball.xcor()<-380:
+        ball._reset()
+       
+        
 screen.exitonclick()
