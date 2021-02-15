@@ -12,13 +12,15 @@ class Paddle(Turtle):
         self.y = 0
         self.speed("fastest")
     def up(self):
-        self.y += 10
-        self.setheading(0)
-        self.goto(self.xcor,self.y)
+        if self.ycor() != 200 :
+            self.y += 10
+            self.setheading(0)
+            self.goto(self.xcor,self.y)
             
         
     def down(self):
-        self.y -= 10
-        self.setheading(0)
-        self.goto(self.xcor,self.y)
+        if self.ycor() != -200 :
+            self.y -= 10
+            self.setheading(0)
+            self.goto(self.xcor,self.y)
     

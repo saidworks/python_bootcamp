@@ -10,6 +10,7 @@ class Ball(Turtle):
         self.pu()
         self.x_move = 5
         self.y_move = 5
+        self.a = 0
         self.speed("slow")
     def move(self):
         new_x = self.xcor() + self.x_move
@@ -22,4 +23,9 @@ class Ball(Turtle):
     def _reset(self):
         self.goto(0,0)
         self.bounce_x()
+    def increase_speed(self):
+        if self.a <= 10:
+            self.a += 1 
+        self.speed(self.a)
+        
   
