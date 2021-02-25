@@ -10,7 +10,8 @@ screen.tracer(0)
 
 # define instances of imported classes
 player = Player()
-car = CarManager()
+cars = CarManager()
+scoreboard = Scoreboard()
 # define actions
 screen.onkey(player.move, 'Up')
 screen.listen()
@@ -20,15 +21,17 @@ game_is_on = True
 while game_is_on:
     time.sleep(0.1)
     screen.update()
-    car.create()
-    car.move()
-    for i in car.all_cars:
-        if player.distance(i)<50:
+    cars.create()
+    cars.move()
+    for i in cars.all_cars:
+        if player.distance(i)<20:
             print('you hit a car :( game over!')
+            scoreboard.game_over()
             game_is_on = False
 
     if player.at_finish_line():
         player.at_start_line()
-        player.clear()
+        cars.level_up()
+        scoreboard.increase_level()
 
 screen.exitonclick()

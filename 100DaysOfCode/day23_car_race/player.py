@@ -1,3 +1,4 @@
+from car_manager import MOVE_INCREMENT
 from turtle import Turtle
 STARTING_POSITION = (0, -280)
 MOVE_DISTANCE = 10
@@ -13,17 +14,16 @@ class Player(Turtle):
         self.pu()
         self.goto(STARTING_POSITION)
         self.y_position = -280
+    def at_start_line(self):
+        self.goto(STARTING_POSITION)
 
     def move(self):
-        if self.ycor() <= FINISH_LINE_Y:
-            self.y_position += MOVE_DISTANCE
-        self.goto(0,self.y_position,)
+        self.forward(MOVE_DISTANCE)
 
     def at_finish_line(self):
         if self.ycor()>FINISH_LINE_Y:
             return True
         else:
             return False
-    def at_start_line(self):
-        self.goto(STARTING_POSITION)
+   
 
