@@ -8,7 +8,9 @@
  """
 
 from docx import Document
+import csv 
 
+with open()
 people_invited= ["Maureen","Ahmed"]
 
 # new document 
