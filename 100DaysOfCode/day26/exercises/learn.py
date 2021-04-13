@@ -36,8 +36,10 @@ letter_dict = {word:len(word) for word in sentence.split()}
 
 print(letter_dict)
 
-# convert Celsius to fahreneit   f = 9/5*C + 32 
+# convert Celsius to fahreneit   f = 9/5*C + 32
+import math
 weather_c = {
+    "day":"temperature",
     "Monday": 12,
     "Tuesday": 14,
     "Wednesday": 15,
@@ -47,6 +49,18 @@ weather_c = {
     "Sunday": 24,
 }
 
-weather_f = {key:(9/5*(value)+32) for key,value in weather_c.items()}
+weather_f = {key:math.floor((9/5*value+32)) for key,value in weather_c.items() if type(value) != str}
 print(weather_f)
 
+# loop over dataframe
+import pandas as pd
+weather_frame= pd.Series(weather_c).to_frame()
+print(weather_frame)
+
+for (index,row) in weather_frame.iterrows():
+    print(row)
+for key,value in weather_frame.items():
+    print(key,value)
+
+weather_c_frame = pd.DataFrame(weather_c,index=[0])
+print(weather_c_frame.day)
