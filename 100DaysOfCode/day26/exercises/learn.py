@@ -27,3 +27,17 @@ with open("../nato_alphabet/nato_phonetic_alphabet.csv",newline="") as f:
 dict = {name:random.randint(1,100) for name in names}
 passed_students = {name:score for name,score  in dict.items() if score>=60}
 print(passed_students)
+
+#build dictionary from a sentence and count letters from words
+sentence = "What is the Airspeed Velocity of an Unladen Swallow"
+letter_dict = {word:len(word) for word in sentence.split()}
+# for word in sentence:
+#     letter_dict[word] = len(word)
+
+
+
+
+print(letter_dict)
+
+
+
