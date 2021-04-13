@@ -34,10 +34,19 @@ letter_dict = {word:len(word) for word in sentence.split()}
 # for word in sentence:
 #     letter_dict[word] = len(word)
 
-
-
-
 print(letter_dict)
 
+# convert Celsius to fahreneit   f = 9/5*C + 32 
+weather_c = {
+    "Monday": 12,
+    "Tuesday": 14,
+    "Wednesday": 15,
+    "Thursday": 14,
+    "Friday": 21,
+    "Saturday": 22,
+    "Sunday": 24,
+}
 
+weather_f = {key:(9/5*(value)+32) for key,value in weather_c.items()}
+print(weather_f)
 
