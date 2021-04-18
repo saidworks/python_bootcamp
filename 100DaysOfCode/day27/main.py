@@ -20,11 +20,13 @@ def mile_to_km():
     miles = input.get()
     km = round((float(miles) * 1.60934),2)
     #result
+    global result
     result = Label(text=f"{km}km",font=("Times New Roman",30,"bold"))
     result.pack(side="bottom",expand=1)
-#button
+#buttons
 km_button = Button(text="km to mi",command=km_to_mile)
 km_button.pack()
+
 mi_button = Button(text="mi to km",command=mile_to_km)
 mi_button.pack()
 
@@ -33,6 +35,11 @@ input = Entry()
 input_frame = Frame(input,width=200,height=200)
 input.pack()
 
+def clear_window():
+    result.pack_forget()
+    print(result)
+clear = Button(text="Clear",command=clear_window)
+clear.pack()
 
 #loop to keep screen running
 window.mainloop()
