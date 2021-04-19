@@ -20,11 +20,15 @@ LONG_BREAK_MIN = 20
 window = Tk()
 window.title("Pomodoro technique")
 window.config(padx=100,pady=50,bg=YELLOW)
-canvas = Canvas(width=200,height=224,bg=YELLOW,highlightthickness=0)
+#create canvas for tomato image
+canvas = Canvas(width=200,height=300,bg=YELLOW,highlightthickness=0)
 tomato_img=PhotoImage(file='tomato.png')
-canvas.create_image(100,112,image=tomato_img)
-canvas.create_text(100,130,text="00:00",fill="white",font=(FONT_NAME,35,"bold"))
+canvas.create_image(100,120,image=tomato_img)
+canvas.create_text(100,150,text="00:00",fill="white",font=(FONT_NAME,35,"bold"))
+#add check button
+check_button = PhotoImage(file='icons8-check-box-with-check-48.png')
+canvas.create_image(100,280,image=check_button)
 canvas.pack()
-
+#need to work using grid method 
 
 window.mainloop()
