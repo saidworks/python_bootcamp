@@ -20,9 +20,11 @@ def timer():
 def countdown(count):
     mins = count // 60
     secs = count % 60
-    print('{}:{}'.format(mins, secs))
+    if secs >=0 and secs < 10 :
+        secs = "0"+ str(secs)
+    if mins >= 0 and mins < 10:
+        mins = "0" + str(mins)
     if count >= 0 :
-
         canvas.itemconfig(canvas_text,text='{}:{}'.format(mins,secs))
         window.after(1000,countdown,count-1)
 
