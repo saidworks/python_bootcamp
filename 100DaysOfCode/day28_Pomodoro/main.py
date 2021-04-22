@@ -10,12 +10,31 @@ FONT_NAME = "Courier"
 WORK_MIN = 25
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
-
+repeat = 0
 # ---------------------------- TIMER RESET ------------------------------- # 
+def reset_timer():
+    pass
 
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
 def timer():
-    countdown(10)
+    global repeat
+    WORK_SEC = WORK_MIN * 60
+    SHORT_BREAK_SEC = SHORT_BREAK_MIN * 60
+    LONG_BREAK_SEC = SHORT_BREAK_MIN * 60
+    repeat += 1
+    if repeat % 2 == 0 and repeat<8:
+        countdown(SHORT_BREAK_SEC)
+        title.config(text="break")
+    elif repeat % 2 != 0:
+        countdown(WORK_SEC)
+        title.config(text="work")
+    elif repeat % 8 == 0:
+        countdown(LONG_BREAK_SEC)
+        title.config(text="Long break")
+
+
+
+
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
 def countdown(count):
     mins = count // 60
@@ -27,7 +46,8 @@ def countdown(count):
     if count >= 0 :
         canvas.itemconfig(canvas_text,text='{}:{}'.format(mins,secs))
         window.after(1000,countdown,count-1)
-
+    else:
+        timer()
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
 window.title("Pomodoro technique")
@@ -49,7 +69,7 @@ check.create_image(20,20,image=check_button)
 check.grid(row=3,column=1)
 start = Button(text='start',padx=10,command=timer)
 start.grid(row=2,column=0)
-reset = Button(text='reset',padx=10)
+reset = Button(text='reset',padx=10,command=reset_timer)
 reset.grid(row=2,column=3)
 
 #need to work using grid method 
