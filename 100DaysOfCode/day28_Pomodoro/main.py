@@ -1,24 +1,25 @@
 
 from tkinter import *
-import time
 import math
-import sspicon
+
 # ---------------------------- CONSTANTS ------------------------------- #
 PINK = "#e2979c"
 RED = "#e7305b"
 GREEN = "#9bdeac"
 YELLOW = "#f7f5dd"
 FONT_NAME = "Courier"
-WORK_MIN = 1
-SHORT_BREAK_MIN = 1
-LONG_BREAK_MIN = 1
+WORK_MIN = 0.1
+SHORT_BREAK_MIN = 0.1
+LONG_BREAK_MIN = 0.1
 repeat = 0
 timer_var = None
-check_mark = None
+marks = ""
 # ---------------------------- TIMER RESET ------------------------------- # 
 def reset_timer():
     window.after_cancel(timer_var)
-    check_mark.config(text=' ',fg=YELLOW)
+    check_mark.config(text='           ',fg=YELLOW)
+
+
 
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
 def timer():
@@ -56,12 +57,13 @@ def countdown(count):
         timer()
         interval = math.floor(repeat / 2)
         global marks
-        for i in range(0,interval):
-            marks = "✅"
-            global check_mark
-            check_mark = Label(text=marks, fg="green")
-            check_mark.grid(row=2, column=1)
-            marks += "✅"
+        marks = "✅"
+        if interval<=4:
+            for i in range(0,interval):
+                check_mark.config(text=marks)
+                marks += "✅"
+                print(marks)
+
 
 
 
@@ -86,7 +88,8 @@ title.grid(row=0,column=1)
 # check_button = PhotoImage(file='icons8-check-box-with-check-48.png')
 # check_1.create_image(20, 20, image=check_button)
 # check_1.grid(row=2, column=2)
-
+check_mark = Label(text=marks, fg="green")
+check_mark.grid(row=2, column=1)
 start = Button(text='start',padx=10,command=timer)
 start.grid(row=2,column=0)
 reset = Button(text='reset',padx=10,command=reset_timer)
