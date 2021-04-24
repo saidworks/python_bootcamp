@@ -1,16 +1,15 @@
-
 from tkinter import *
 import math
-
+from playsound import playsound
 # ---------------------------- CONSTANTS ------------------------------- #
 PINK = "#e2979c"
 RED = "#e7305b"
 GREEN = "#9bdeac"
 YELLOW = "#f7f5dd"
 FONT_NAME = "Courier"
-WORK_MIN = 0.1
-SHORT_BREAK_MIN = 0.1
-LONG_BREAK_MIN = 0.1
+WORK_MIN = 25
+SHORT_BREAK_MIN = 5
+LONG_BREAK_MIN = 20
 repeat = 0
 timer_var = None
 marks = ""
@@ -37,8 +36,9 @@ def timer():
     elif repeat % 8 == 0:
         countdown(LONG_BREAK_SEC)
         title.config(text="Long break",fg=PINK)
-
-
+        if countdown(LONG_BREAK_SEC)==0:
+            filename = r'./01.Taka Takata.mp3'
+            playsound(filename)
 
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
@@ -63,11 +63,6 @@ def countdown(count):
                 check_mark.config(text=marks)
                 marks += "✅"
                 print(marks)
-
-
-
-
-
 
 
 # ---------------------------- UI SETUP ------------------------------- #

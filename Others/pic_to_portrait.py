@@ -1,7 +1,7 @@
 import cv2
 
 img_location = 'C:/Users/saidworks/Downloads/'
-filename = 'DSC03515.JPG'
+filename = '20201029_185319.jpg'
 
 img = cv2.imread(img_location+filename)
 
@@ -15,7 +15,7 @@ inverted_blurred_img = 255 - blurred_img
 
 pencil_sketch_IMG = cv2.divide(gray_image, inverted_blurred_img, scale = 256.0)
 
-cv2.imwrite("portrait.jpg",pencil_sketch_IMG)
+cv2.imwrite("portrait_aya.jpg",pencil_sketch_IMG)
 #Show the original image
 cv2.imshow('Original Image', img)
 #Show the new image pencil sketch
