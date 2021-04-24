@@ -13,9 +13,12 @@ WORK_MIN = 1
 SHORT_BREAK_MIN = 1
 LONG_BREAK_MIN = 1
 repeat = 0
+timer_var = None
+check_mark = None
 # ---------------------------- TIMER RESET ------------------------------- # 
 def reset_timer():
-    pass
+    window.after_cancel(timer_var)
+    check_mark.config(text=' ',fg=YELLOW)
 
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
 def timer():
@@ -33,10 +36,8 @@ def timer():
     elif repeat % 8 == 0:
         countdown(LONG_BREAK_SEC)
         title.config(text="Long break",fg=PINK)
-    for i in range(math.floor(repeat / 2)):
-        check_2 = Label(text="S", fg="green")
-        check_2.grid(row=3, column=1)
-        print(repeat)
+
+
 
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
@@ -49,9 +50,19 @@ def countdown(count):
         mins = "0" + str(mins)
     if count >= 0 :
         canvas.itemconfig(canvas_text,text='{}:{}'.format(mins,secs))
-        window.after(1000,countdown,count-1)
+        global timer_var
+        timer_var = window.after(1000,countdown,count-1)
     else:
         timer()
+        interval = math.floor(repeat / 2)
+        global marks
+        for i in range(0,interval):
+            marks = "✅"
+            global check_mark
+            check_mark = Label(text=marks, fg="green")
+            check_mark.grid(row=2, column=1)
+            marks += "✅"
+
 
 
 
@@ -71,10 +82,11 @@ canvas_text = canvas.create_text(100,150,text='00:00',fill="white",font=(FONT_NA
 #add title, check and buttons
 title = Label(text="Timer",fg=GREEN,font=(FONT_NAME,30,'bold'),bg=YELLOW,highlightthickness=0)
 title.grid(row=0,column=1)
-check_1 = Canvas(width=40, height=40, bg=YELLOW)
-check_button = PhotoImage(file='icons8-check-box-with-check-48.png')
-check_1.create_image(20, 20, image=check_button)
-check_1.grid(row=2, column=2)
+# check_1 = Canvas(width=40, height=40, bg=YELLOW)
+# check_button = PhotoImage(file='icons8-check-box-with-check-48.png')
+# check_1.create_image(20, 20, image=check_button)
+# check_1.grid(row=2, column=2)
+
 start = Button(text='start',padx=10,command=timer)
 start.grid(row=2,column=0)
 reset = Button(text='reset',padx=10,command=reset_timer)
