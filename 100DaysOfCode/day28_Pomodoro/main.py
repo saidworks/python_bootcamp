@@ -7,9 +7,9 @@ RED = "#e7305b"
 GREEN = "#9bdeac"
 YELLOW = "#f7f5dd"
 FONT_NAME = "Courier"
-WORK_MIN = 10
-SHORT_BREAK_MIN = 1
-LONG_BREAK_MIN = 1
+WORK_MIN = 25
+SHORT_BREAK_MIN = 5
+LONG_BREAK_MIN = 20
 repeat = 0
 timer_var = None
 marks = ""
@@ -53,18 +53,20 @@ def countdown(count):
         global timer_var
         timer_var = window.after(1000,countdown,count-1)
     else:
+        sound = r'mixkit-repeating-arcade-beep-1084.wav'
+        playsound(sound)
         timer()
         interval = math.floor(repeat / 2)
         global marks
-        marks = "✅"
+        marks = ""
         if interval<=4:
             for i in range(0,interval):
                 check_mark.config(text=marks)
                 marks += "✅"
             print(marks)
-            if marks == "✅✅✅✅✅" and interval == 4:
-                filename = r'./01.Taka Takata.mp3'
-                playsound(filename)
+        if marks == "✅✅✅✅" and interval == 4:
+            filename = r'./01.Taka Takata.mp3'
+            playsound(filename)
 
 
 # ---------------------------- UI SETUP ------------------------------- #
