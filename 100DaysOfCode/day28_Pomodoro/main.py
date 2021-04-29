@@ -61,12 +61,13 @@ def countdown(count):
         marks = ""
         if interval<=4:
             for i in range(0,interval):
-                check_mark.config(text=marks)
                 marks += "✅"
+                check_mark.config(text=marks)
+
             print(marks)
-        if marks == "✅✅✅✅" and interval == 4:
-            filename = r'./01.Taka Takata.mp3'
-            playsound(filename)
+            if marks == "✅✅✅✅" and interval == 4:
+                filename = r'./01.Taka Takata.mp3'
+                playsound(filename)
 
 
 # ---------------------------- UI SETUP ------------------------------- #
