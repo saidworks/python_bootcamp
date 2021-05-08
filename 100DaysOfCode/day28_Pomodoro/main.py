@@ -15,8 +15,8 @@ timer_var = None
 marks = ""
 # ---------------------------- TIMER RESET ------------------------------- # 
 def reset_timer():
-    window.after_cancel(timer)
-    check_mark.config(text='           ',fg=YELLOW)
+    window.after_cancel(timer_var)
+    check_mark.config(text='           ',fg=YELLOW,bg=YELLOW)
 
 
 
