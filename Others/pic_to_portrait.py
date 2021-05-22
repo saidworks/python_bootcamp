@@ -1,7 +1,7 @@
 import cv2
 
 img_location = './'
-filename = 'DSC_6173.JPG'
+filename = 'WhatsApp Image 2021-05-14 at 19.46.33.jpeg'
 
 img = cv2.imread(img_location+filename)
 
@@ -15,7 +15,7 @@ inverted_blurred_img = 255 - blurred_img
 
 pencil_sketch_IMG = cv2.divide(gray_image, inverted_blurred_img, scale = 256.0)
 
-cv2.imwrite("portrait_said_2020.jpg",pencil_sketch_IMG)
+cv2.imwrite("portrait_rayan.jpg",pencil_sketch_IMG)
 #Show the original image
 cv2.imshow('Original Image', img)
 #Show the new image pencil sketch
