@@ -1,7 +1,7 @@
 # task : count squirrel with same color
 
 import pandas as pd
-
+import time
 data = pd.read_csv('2018_Central_Park_Squirrel_Census_-_Squirrel_Data.csv')
 serie = data['Primary Fur Color']
 colors = {"Gray": 0,
