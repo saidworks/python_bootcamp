@@ -17,3 +17,5 @@ datas = [['letter_index','letter','frequency'],[1,'A',7.38],[2,'B',1.09],[3,'C',
 
 df_letters = pd.DataFrame(datas)
 print(df_letters)
+letters = [i[1] for i in datas if len(i)>2 ]
+print(letters)
