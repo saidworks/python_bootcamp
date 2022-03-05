@@ -16,6 +16,8 @@ plt.show()
 datas = [['letter_index','letter','frequency'],[1,'A',7.38],[2,'B',1.09],[3,'C',2.46],[4,'D',4.10]]
 
 df_letters = pd.DataFrame(datas)
-print(df_letters)
-letters = [i[1] for i in datas if len(i)>2 ]
-print(letters)
+
+letters = [i[1] for i in datas if len(i[1])<2 ]
+frequencies = [i[2] for i in datas if  i[2] != 'frequency']
+plt.bar(letters,frequencies)
+plt.show()
