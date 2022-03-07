@@ -19,5 +19,5 @@ df_letters = pd.DataFrame(datas)
 
 letters = [i[1] for i in datas if len(i[1])<2 ]
 frequencies = [i[2] for i in datas if  i[2] != 'frequency']
-plt.bar(letters,frequencies)
+plt.barh(letters,frequencies)
 plt.show()
