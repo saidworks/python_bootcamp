@@ -7,6 +7,16 @@
 # #save it as a file
 #
 import requests
+
+import time
+import subprocess
+import selenium
+import os
+import pprint
+from selenium.webdriver.chrome.options import Options
+
+pp = pprint.PrettyPrinter(indent=2)
+
 #scrap the url of the picture
 
 
@@ -23,8 +33,6 @@ insta = requests.get(url)
 insta_img = open('insta.jpg','wb')
 # test_img.write(test.content)
 insta_img.write(insta.content)
-
-
 
 
 
